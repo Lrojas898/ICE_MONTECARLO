@@ -1,2 +1,4 @@
 rootProject.name = 'ICE_MONTECARLO'
+include 'client'
+include 'server'
 

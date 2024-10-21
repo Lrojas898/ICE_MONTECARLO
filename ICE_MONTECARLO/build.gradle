@@ -1,37 +1,42 @@
 plugins {
-    id 'java'
     id 'com.zeroc.gradle.ice-builder.slice' version '1.5.0' apply false
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'com.zeroc.gradle.ice-builder.slice'
 
-apply plugin: 'com.zeroc.gradle.ice-builder.slice'
-slice {
-    java {
-        files = [file("MontecarloPi.ice")]
+    slice {
+        java {
+
+            files = file("$rootDir/App.ice")
         }
- }
+    }
 
+    repositories {
+        mavenCentral()
+    }
 
-repositories {
-    mavenCentral()
-}
+    dependencies {
+        implementation 'com.zeroc:ice:3.7.4'
+        implementation 'com.google.code.gson:gson:2.10.1'
+    }
 
-dependencies {
-    implementation 'com.zeroc:ice:3.7.9'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-}
+    task copyIceJar(type: Copy) {
+        from configurations.runtimeClasspath
+        include 'ice-3.7.4.jar'
+        include 'gson-2.10.1.jar'
+        into "$buildDir/libs"
+    }
 
+    jar.dependsOn copyIceJar
 
-task copyIceJar(type: Copy) {
-    from configurations.runtimeClasspath
-    include 'ice-3.7.4.jar'
-    include 'gson-2.10.1.jar'
-    into "$buildDir/libs"
-}
-
-test {
-    useJUnitPlatform()
+    jar {
+        manifest {
+            attributes(
+                    "Main-Class": project.name.capitalize(),
+                    "Class-Path": configurations.runtimeClasspath.files.collect { "${it.name}" }.join(' ')
+            )
+        }
+    }
 }
