@@ -1,4 +1,4 @@
-module MontecarloPi {
+module MontCarloPiEstimation {
     interface Worker {
         int calculatePoints(int totalPoints);
     }

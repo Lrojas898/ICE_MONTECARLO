@@ -8,8 +8,7 @@ subprojects {
 
     slice {
         java {
-
-            files = file("$rootDir/App.ice")
+            files = [file("$rootDir/MontCarloPiEstimation.ice")]
         }
     }
 
