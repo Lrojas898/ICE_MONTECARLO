@@ -6,4 +6,7 @@ public class MasterI implements Master {
     public float estimatePi(int totalPoints, int workers, Current current) {
         return 0;
     }
+
+    public void processCommand(String s, String s1) {
+    }
 }
