@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fdae8642-c38f-4e18-bb37-dde5437eed7a" name="Changes" comment="" />
+    <list default="true" id="fdae8642-c38f-4e18-bb37-dde5437eed7a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/MontecarloPiEstimationClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/MontecarloPiEstimationClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/MasterI.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/MasterI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/MontCarloWorkerI.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/MontCarloWorkerI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ServerMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ServerMaster.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +28,12 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ICE_MONTECARLO" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -58,7 +71,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feat/distributed-architecture",
     "jdk.selected.JAVA_MODULE": "openjdk-21",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/DELL/Desktop/Programación/compunet/ICE_MONTECARLO/ICE_MONTECARLO",
@@ -67,9 +80,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -99,6 +112,7 @@
       <workItem from="1729528998263" duration="5523000" />
       <workItem from="1729605765401" duration="1260000" />
       <workItem from="1729628397224" duration="381000" />
+      <workItem from="1729679792979" duration="2504000" />
     </task>
     <servers />
   </component>

@@ -8,7 +8,7 @@ subprojects {
 
     slice {
         java {
-            files = [file("$rootDir/MontCarloPiEstimation.ice")]
+            files = [file("C:/Users/luism/Documents/Study/Compunet/ICE_MONTECARLO/ICE_MONTECARLO/MontCarloPiEstimation.ice")]
         }
     }
 
@@ -17,14 +17,12 @@ subprojects {
     }
 
     dependencies {
-        implementation 'com.zeroc:ice:3.7.4'
+        implementation 'com.zeroc:ice:3.7.9' // Actualizar si es necesario
         implementation 'com.google.code.gson:gson:2.10.1'
     }
 
     task copyIceJar(type: Copy) {
         from configurations.runtimeClasspath
-        include 'ice-3.7.4.jar'
-        include 'gson-2.10.1.jar'
         into "$buildDir/libs"
     }
 
@@ -33,9 +31,12 @@ subprojects {
     jar {
         manifest {
             attributes(
-                    "Main-Class": project.name.capitalize(),
+                    "Main-Class": "com.example.MainClass", // Clase principal correcta
                     "Class-Path": configurations.runtimeClasspath.files.collect { "${it.name}" }.join(' ')
             )
         }
     }
+
+    sourceCompatibility = '11'  // Compatibilidad de Java
+    targetCompatibility = '11'
 }

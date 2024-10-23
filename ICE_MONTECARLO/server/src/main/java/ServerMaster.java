@@ -1,55 +1,20 @@
-import com.zeroc.Ice.Communicator;
-import com.zeroc.Ice.ObjectAdapter;
-import com.zeroc.Ice.Util;
-import com.google.gson.Gson;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
+import com.zeroc.Ice.*;
 
 public class ServerMaster {
     public static void main(String[] args) {
+        try (Communicator communicator = Util.initialize(args)) {
+            // Crear el adaptador para el objeto Master
+            ObjectAdapter adapter = communicator.createObjectAdapterWithEndpoints("MasterAdapter", "default -p 10000");
 
-        try (Communicator communicator = Util.initialize(args, "properties.cfg")) {
+            // Añadir el objeto MasterI al adaptador, sin necesidad de cast a Object
+            adapter.add(new MasterI(communicator), Util.stringToIdentity("master"));
 
-
-            ObjectAdapter adapter = communicator.createObjectAdapter("MasterAdapter");
-
-
-            Gson gson = new Gson();
-
-
-            MasterI master = new MasterI();
-
-
-            adapter.add(master, Util.stringToIdentity("Master"));
-
-
+            // Activar el adaptador para comenzar a recibir solicitudes
             adapter.activate();
+            System.out.println("Servidor Master iniciado.");
 
-            System.out.println("ServerMaster is running...");
-
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            String msg;
-
-            while ((msg = reader.readLine()) != null) {
-
-                String[] command = msg.split("::");
-                if (command.length == 2) {
-
-                    master.processCommand(command[0], command[1]);
-                } else {
-                    System.out.println("Invalid command format. Use: Command::Message");
-                }
-            }
-
-            // El servidor espera conexiones hasta que se apague
+            // Esperar hasta que el servidor sea apagado
             communicator.waitForShutdown();
-            reader.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }
