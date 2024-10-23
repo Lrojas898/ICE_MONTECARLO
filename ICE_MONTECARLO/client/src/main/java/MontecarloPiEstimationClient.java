@@ -1,30 +1,38 @@
-import com.zeroc.Ice.*;
-import java.io.*;
+
+
+import com.zeroc.Ice.Communicator;
+import com.zeroc.Ice.Util;
+import MontCarloPiEstimation.MasterPrx;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 
 public class MontecarloPiEstimationClient {
-
     public static void main(String[] args) {
+        try (Communicator communicator = Util.initialize(args, "properties.cfg")) {
+            // Obtener el proxy del maestro
+            MasterPrx master = MasterPrx.checkedCast(
+                    communicator.stringToProxy("Master:default -p 5000 -h localhost")
+            );
 
-        ///////////////////////////////////////////
-        //  La conexión general con Ice en Java  //
-        ///////////////////////////////////////////
-        try(Communicator communicator = Util.initialize(args, "properties.cfg") ) {
+            if (master == null) {
+                throw new Error("Proxy inválido para Master");
+            }
 
-            System.out.println("Give me a name: ");
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            String name = reader.readLine();
+
+            System.out.println("Introduce el número de puntos para estimar Pi:");
+            String input = reader.readLine();
+            try {
+                int totalPoints = Integer.parseInt(input);
+                float piEstimate = master.estimatePi(totalPoints);
+                System.out.println("Estimación de Pi = " + piEstimate);
+            } catch (NumberFormatException e) {
+                System.out.println("Formato de número inválido.");
+            }
+
             reader.close();
-
-
-            //ObjectAdapter adapter = communicator.createObjectAdapter("Suscriber");
-
-            adapter.activate();
-
-
-            communicator.waitForShutdown();
-
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
