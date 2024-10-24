@@ -5,29 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7689d488-279f-42c6-89d3-c4609123038c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/resources/properties.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/master/src/main/java/MasterI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/master/src/main/java/ServerMaster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/master/src/main/resources/properties.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/worker/src/main/java/MontCarloWorker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/worker/src/main/java/MontCarloWorkerI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/worker/src/main/resources/properties.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MontCarloPiEstimation.ice" beforeDir="false" afterPath="$PROJECT_DIR$/MontCarloPiEstimation.ice" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/MontecarloPiEstimationClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/MontecarloPiEstimationClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/MasterI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/MontCarloWorkerI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/ServerMaster.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/properties.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/MontecarloPiEstimationClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/src/main/java/ServerMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/master/src/main/java/Master.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worker/src/main/java/MontCarloWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/worker/src/main/java/Worker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +86,8 @@
       <option name="presentableId" value="Default" />
       <updated>1729679431371</updated>
       <workItem from="1729679433277" duration="6632000" />
-      <workItem from="1729715189916" duration="723000" />
+      <workItem from="1729715189916" duration="3852000" />
+      <workItem from="1729784628856" duration="651000" />
     </task>
     <servers />
   </component>
