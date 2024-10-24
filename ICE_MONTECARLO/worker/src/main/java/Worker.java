@@ -12,23 +12,29 @@ public class Worker {
         try (Communicator communicator = Util.initialize(args, "properties.cfg")) {
             // Crear y activar el adaptador del trabajador
             ObjectAdapter adapter = communicator.createObjectAdapter("WorkerAdapter");
+
             MontCarloWorkerI worker = new MontCarloWorkerI();
-            String workerName = "Worker1"; // Cambia esto para múltiples trabajadores
 
-            // Agregar el trabajador al adaptador y obtener su proxy
-            ObjectPrx base = adapter.add(worker, Util.stringToIdentity(workerName));
-            WorkerPrx workerPrx = WorkerPrx.checkedCast(base); // Aquí se obtiene el proxy
+            // Asignar un nombre único para cada Worker
+            String workerName = System.getProperty("workerName"); // Leer de los argumentos o propiedades del sistema
 
+            if (workerName == null) {
+                workerName = "Worker_" + java.util.UUID.randomUUID(); // Generar un nombre único si no se especifica
+            }
+
+            adapter.add(worker, Util.stringToIdentity(workerName));
             adapter.activate();
 
             // Obtener el proxy del maestro
             MasterPrx master = MasterPrx.checkedCast(
-                    communicator.stringToProxy("Master:default -p 5000 -h 192.168.212.66"));
+                    communicator.stringToProxy("Master:default -p 5000 -h 192.168.212.66")
+            );
 
             if (master == null) {
                 throw new Error("Proxy inválido para Master");
             }
 
+            WorkerPrx workerPrx = WorkerPrx.checkedCast(adapter.createProxy(Util.stringToIdentity(workerName)));
             // Registrar el trabajador con el maestro
             master.registerWorker(workerName, workerPrx);
 
