@@ -6,17 +6,20 @@ import com.zeroc.Ice.Util;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import com.google.gson.*;
 
-public class ServerMaster {
+
+public class Master {
     public static void main(String[] args) {
         try (Communicator communicator = Util.initialize(args, "properties.cfg")) {
             // Crear y activar el adaptador del maestro
             ObjectAdapter masterAdapter = communicator.createObjectAdapter("MasterAdapter");
-            MasterI master = new MasterI();
-            masterAdapter.add(master, Util.stringToIdentity("Master"));
+            Gson gson =  new Gson();
+            MasterI masterI = new MasterI();
+            masterAdapter.add(masterI, Util.stringToIdentity("Master"));
             masterAdapter.activate();
 
-            System.out.println("ServerMaster está en ejecución...");
+            System.out.println("Master está en ejecución...");
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String msg;
@@ -28,7 +31,7 @@ public class ServerMaster {
                     if (command[0].equalsIgnoreCase("estimatePi")) {
                         try {
                             int totalPoints = Integer.parseInt(command[1]);
-                            float pi = master.estimatePi(totalPoints);
+                            float pi = masterI.estimatePi(totalPoints);
                             System.out.println("Estimación de Pi = " + pi);
                         } catch (NumberFormatException e) {
                             System.out.println("Formato de número inválido para totalPoints.");

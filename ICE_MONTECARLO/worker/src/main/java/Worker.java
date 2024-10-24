@@ -8,7 +8,7 @@ import com.zeroc.Ice.ObjectAdapter;
 import com.zeroc.Ice.ObjectPrx;
 import com.zeroc.Ice.Util;
 
-public class MontCarloWorker {
+public class Worker {
     public static void main(String[] args) {
         try (Communicator communicator = Util.initialize(args, "properties.cfg")) {
             // Crear y activar el adaptador del trabajador
