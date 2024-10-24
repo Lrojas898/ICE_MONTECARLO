@@ -1,5 +1,4 @@
 
-
 import MontCarloPiEstimation.MasterPrx;
 import MontCarloPiEstimation.MontCarloWorkerI;
 import MontCarloPiEstimation.WorkerPrx;
@@ -15,18 +14,21 @@ public class Worker {
             ObjectAdapter adapter = communicator.createObjectAdapter("WorkerAdapter");
             MontCarloWorkerI worker = new MontCarloWorkerI();
             String workerName = "Worker1"; // Cambia esto para múltiples trabajadores
-            adapter.add(worker, Util.stringToIdentity(workerName));
+
+            // Agregar el trabajador al adaptador y obtener su proxy
+            ObjectPrx base = adapter.add(worker, Util.stringToIdentity(workerName));
+            WorkerPrx workerPrx = WorkerPrx.checkedCast(base); // Aquí se obtiene el proxy
+
             adapter.activate();
 
             // Obtener el proxy del maestro
             MasterPrx master = MasterPrx.checkedCast(
-                    communicator.stringToProxy("Master:default -p 5000 -h localhost")
-            );
+                    communicator.stringToProxy("Master:default -p 5000 -h 192.168.212.66"));
 
             if (master == null) {
                 throw new Error("Proxy inválido para Master");
             }
-            WorkerPrx workerPrx = WorkerPrx.checkedCast((ObjectPrx) worker);
+
             // Registrar el trabajador con el maestro
             master.registerWorker(workerName, workerPrx);
 
