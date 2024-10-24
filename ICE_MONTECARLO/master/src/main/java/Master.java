@@ -19,7 +19,7 @@ public class Master {
             masterAdapter.add(masterI, Util.stringToIdentity("Master"));
             masterAdapter.activate();
 
-            System.out.println("Master está en ejecución...");
+            System.out.println("Master esta en ejecucion...");
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String msg;
@@ -34,11 +34,11 @@ public class Master {
                             float pi = masterI.estimatePi(totalPoints);
                             System.out.println("Estimación de Pi = " + pi);
                         } catch (NumberFormatException e) {
-                            System.out.println("Formato de número inválido para totalPoints.");
+                            System.out.println("Formato de numero inválido para totalPoints.");
                         }
                     }
                 } else {
-                    System.out.println("Formato de comando inválido. Use: estimatePi::<número_de_puntos>");
+                    System.out.println("Formato de comando invalido. Use: estimatePi::<número_de_puntos>");
                 }
             }
 

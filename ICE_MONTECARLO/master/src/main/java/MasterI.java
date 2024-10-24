@@ -33,7 +33,7 @@ public class MasterI implements Master {
             try {
                 int inside = worker.calculatePoints(points);
                 totalInside += inside;
-                System.out.println("Trabajador " + name + " procesó " + points + " puntos, dentro: " + inside);
+                System.out.println("Trabajador " + name + " proceso " + points + " puntos, dentro: " + inside);
             } catch (Exception e) {
                 System.out.println("Error al obtener resultado del trabajador " + name + ": " + e.getMessage());
             }
@@ -81,7 +81,7 @@ public class MasterI implements Master {
             try {
                 int inside = worker.calculatePoints(points);
                 totalInside += inside;
-                System.out.println("Trabajador " + name + " procesó " + points + " puntos, dentro: " + inside);
+                System.out.println("Trabajador " + name + " proceso " + points + " puntos, dentro: " + inside);
             } catch (Exception e) {
                 System.out.println("Error al obtener resultado del trabajador " + name + ": " + e.getMessage());
             }

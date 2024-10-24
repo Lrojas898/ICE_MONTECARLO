@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7689d488-279f-42c6-89d3-c4609123038c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/worker/src/main/java/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/worker/src/main/java/Worker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/worker/src/main/resources/properties.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/worker/src/main/resources/properties.cfg" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/master/src/main/java/MasterI.java" beforeDir="false" afterPath="$PROJECT_DIR$/master/src/main/java/MasterI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/src/main/resources/properties.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/master/src/main/resources/properties.cfg" afterDir="false" />
+>>>>>>> b175501d7d6a972a52a462f6296075fe8b12d92a
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +30,12 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ICE_MONTECARLO" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -44,6 +55,10 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 2
+}]]></component>
   <component name="ProjectId" id="2npoZ1ucfQV6y639TvRkLlSwlIf" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -60,6 +75,10 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "19",
+<<<<<<< HEAD
+=======
+    "kotlin-language-version-configured": "true",
+>>>>>>> b175501d7d6a972a52a462f6296075fe8b12d92a
     "last_opened_file_path": "C:/Users/Oscar Muñoz/Downloads/Atom_Material_Icons-90.0.0.zip",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -79,6 +98,14 @@
       <recent name="C:\Users\OscarMunoz\Documents\5 Semestre\CompuNet\ICE_MONTECARLO\ICE_MONTECARLO\gradle" />
     </key>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -90,6 +117,7 @@
       <workItem from="1729679433277" duration="6632000" />
       <workItem from="1729715189916" duration="3852000" />
       <workItem from="1729784628856" duration="651000" />
+      <workItem from="1729791245439" duration="2524000" />
     </task>
     <servers />
   </component>

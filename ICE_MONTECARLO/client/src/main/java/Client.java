@@ -1,5 +1,3 @@
-
-
 import com.zeroc.Ice.Communicator;
 import com.zeroc.Ice.Util;
 import MontCarloPiEstimation.MasterPrx;
@@ -12,12 +10,14 @@ public class Client {
         try (Communicator communicator = Util.initialize(args, "properties.cfg")) {
             // Obtener el proxy del maestro
             MasterPrx master = MasterPrx.checkedCast(
-                    communicator.stringToProxy("Master:default -p 5000 -h localhost")
+                    communicator.stringToProxy("Master:default -p 5000 -h 192.168.212.66")
             );
 
             if (master == null) {
                 throw new Error("Proxy inválido para Master");
             }
+
+            long startTime = System.currentTimeMillis();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -32,6 +32,10 @@ public class Client {
             }
 
             reader.close();
+
+            System.out.println("Puntos usados: " + input);
+            System.out.println("Tiempo total: " + (System.currentTimeMillis() - startTime)/1000 + " segundos");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
