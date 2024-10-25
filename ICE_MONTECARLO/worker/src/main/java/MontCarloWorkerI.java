@@ -1,4 +1,3 @@
-package MontCarloPiEstimation;
 
 import MontCarloPiEstimation.Worker;
 import com.zeroc.Ice.Current;
@@ -9,10 +8,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class MontCarloWorkerI implements Worker {
 
-    // Número de hilos a utilizar dentro del Worker
-    private static final int NUM_THREADS = Runtime.getRuntime().availableProcessors();
+    private static final int NUM_THREADS = 3;
 
-    // ExecutorService para gestionar los hilos
     private final ExecutorService executor;
 
     public MontCarloWorkerI() {
@@ -25,15 +22,12 @@ public class MontCarloWorkerI implements Worker {
             return 0;
         }
 
-        // Tamaño del lote por hilo
         int pointsPerThread = totalPoints / NUM_THREADS;
         int remainder = totalPoints % NUM_THREADS;
 
-        // Lista para almacenar las tareas
         List<Callable<Integer>> tasks = new ArrayList<>();
 
         for (int i = 0; i < NUM_THREADS; i++) {
-            // Ajustar la cantidad de puntos para manejar el resto
             int points = pointsPerThread + (i < remainder ? 1 : 0);
 
             tasks.add(() -> {
@@ -51,7 +45,6 @@ public class MontCarloWorkerI implements Worker {
             });
         }
 
-        // Ejecutar todas las tareas y esperar los resultados
         int totalInside = 0;
         try {
             List<Future<Integer>> results = executor.invokeAll(tasks);
@@ -66,7 +59,6 @@ public class MontCarloWorkerI implements Worker {
         return totalInside;
     }
 
-    // Método para cerrar el ExecutorService
     public void shutdown() {
         executor.shutdown();
         try {
