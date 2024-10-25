@@ -17,7 +17,7 @@ public class Client {
         try (Communicator communicator = Util.initialize(args, "properties.cfg")) {
             // Obtener el proxy del maestro
             MasterPrx master = MasterPrx.checkedCast(
-                    communicator.stringToProxy("Master:default -p 5000 -h 192.168.212.66")
+                    communicator.stringToProxy("Master:default -p 5000 -h localhost")
             );
 
             if (master == null) {
