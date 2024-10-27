@@ -37,7 +37,7 @@ public class Client {
             // Preguntar al usuario por la opción deseada
             System.out.println("Elige una opción:");
             System.out.println("1. Introducir el número de puntos manualmente.");
-            System.out.println("2. Ejecutar 10 casos con puntos desde 10^1 hasta 10^15.");
+            System.out.println("2. Ejecutar 15 casos continuos con puntos desde 10^1 hasta 10^15.");
 
             String option = reader.readLine();
 
