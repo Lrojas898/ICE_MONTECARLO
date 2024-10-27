@@ -50,6 +50,22 @@ El sistema está implementado utilizando ICE, un middleware que facilita la crea
   
 - **Escalabilidad**: El sistema está diseñado para ser escalable. A medida que aumenta el número de puntos `N` o el número de trabajadores `n`, el sistema puede manejar eficientemente la distribución de tareas entre los trabajadores.
 
+### Pruebas y Evaluación:
+
+Se realizaron varias pruebas con diferentes cantidades de puntos `N` y distintos números de trabajadores `n` para evaluar el rendimiento y precisión del sistema. A medida que se aumentó el número de puntos lanzados, la estimación de π se acercó más al valor real de π.
+
+Además, se midió el tiempo de ejecución con diferentes configuraciones de `n` trabajadores. Aumentando el número de nodos (trabajadores) en la red, se investigó cómo varió el tiempo de ejecución y cómo afectó la escalabilidad del sistema.
+
+#### Resultados Exportados a CSV:
+
+Los resultados de las pruebas, incluyendo el número de puntos lanzados, el número de trabajadores, el tiempo de ejecución, y la estimación obtenida de π, se exportaron a un archivo CSV para su análisis posterior. El formato del CSV contiene las siguientes columnas:
+
+- **N**: Número total de puntos lanzados.
+- **Tiempo de ejecución (s)**: Tiempo en segundos que tomó ejecutar la tarea.
+- **Estimación de π**: Valor estimado de π basado en la proporción de puntos dentro del círculo.
+
+El archivo CSV permitirá realizar un análisis detallado de cómo varía la precisión de la estimación y el tiempo de ejecución según las configuraciones probadas.
+
 ### Flujo básico de implementación:
 
 1. **Cliente**: Envía una petición al maestro para calcular π con `N` puntos.
@@ -63,4 +79,4 @@ El sistema está implementado utilizando ICE, un middleware que facilita la crea
    - Reciben su tarea, generan puntos aleatorios, y cuentan cuántos caen dentro del círculo.
    - Devuelven el número de puntos dentro del círculo al maestro.
 
-Este diseño permite que el cálculo sea distribuido y paralelo, lo que optimiza el tiempo de ejecución a medida que aumenta la cantidad de puntos `N`.
+Este diseño permite que el cálculo sea distribuido y paralelo, lo que optimiza el tiempo de ejecución a medida que aumenta la cantidad de puntos `N`. El analisis de los datos obtenidos estaran adjuntos en un informe en la carpeta docs del repositorio, donde se podra informar más.
