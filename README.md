@@ -79,4 +79,31 @@ El archivo CSV permitirá realizar un análisis detallado de cómo varía la pre
    - Reciben su tarea, generan puntos aleatorios, y cuentan cuántos caen dentro del círculo.
    - Devuelven el número de puntos dentro del círculo al maestro.
 
-Este diseño permite que el cálculo sea distribuido y paralelo, lo que optimiza el tiempo de ejecución a medida que aumenta la cantidad de puntos `N`. El analisis de los datos obtenidos estaran adjuntos en un informe en la carpeta docs del repositorio, donde se podra informar más.
+Este diseño permite que el cálculo sea distribuido y paralelo, lo que optimiza el tiempo de ejecución a medida que aumenta la cantidad de puntos `N`. 
+
+### Ejecucion del programa
+
+**Worker:**
+
+Se ejecuta con el comando:
+
+`java -jar worker/build/libs/worker.jar`
+
+**Client:**
+
+Se ejecuta con el comando:
+
+`java -jar Master/build/libs/Master.jar`
+
+**Master:** 
+
+Se ejecuta con el comando:
+
+`java -jar client/build/libs/client.jar`
+
+**Nota:**
+
+- Es necesario poner la ip actual del worker y estar en la misma red.
+- El analisis de los datos obtenidos y las instrucciones estaran adjuntos en un informe en la carpeta docs del repositorio, donde se podra informar más.
+
+
