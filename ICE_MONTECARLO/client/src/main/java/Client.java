@@ -9,13 +9,25 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 
 public class Client {
+    /**
+     * The main function initializes communication, interacts with a Master object to estimate Pi based
+     * on user input, and saves the results to a CSV file.
+     */
     public static void main(String[] args) {
         try (Communicator communicator = Util.initialize(args, "properties.cfg")) {
-            // Obtener el proxy del maestro
+           // The line `MasterPrx master =
+           // MasterPrx.checkedCast(communicator.stringToProxy("Master:default -p 5000 -h
+           // 192.168.212.66"));` in the Java code snippet is creating a proxy object `master` for the
+           // `Master` interface using Ice, which is a middleware for developing distributed
+           // applications.
             MasterPrx master = MasterPrx.checkedCast(
                     communicator.stringToProxy("Master:default -p 5000 -h 192.168.212.66")
             );
 
+            // The `if (master == null)` block in the Java code snippet is checking if the proxy object
+            // `master` for the `Master` interface is `null`. If the `master` object is `null`, it
+            // means that the attempt to create a proxy for the `Master` interface using Ice
+            // communication framework was unsuccessful.
             if (master == null) {
                 throw new Error("Proxy inválido para Master");
             }
@@ -29,8 +41,10 @@ public class Client {
 
             String option = reader.readLine();
 
+            // This part of the code in the `Client` class is responsible for handling user input based
+            // on the selected option:
             if (option.equals("1")) {
-                // Opción 1: Introducir número de puntos manualmente
+                // Option 1: Input total points manually
                 System.out.println("Introduce el número de puntos para estimar Pi:");
                 String input = reader.readLine();
                 try {
@@ -52,7 +66,7 @@ public class Client {
                     System.out.println("Formato de número inválido.");
                 }
             } else if (option.equals("2")) {
-                // Opción 2: Ejecutar 15 casos desde 10^1 hasta 10^15
+                // Option 2: Execute 10 cases with points from 10^1 to 10^15
                 for (int i = 1; i <= 15; i++) {
                     int totalPoints = (int) Math.pow(10, i);
 
@@ -66,7 +80,7 @@ public class Client {
                     System.out.println("Estimación de Pi = " + piEstimate);
                     System.out.println("Tiempo total: " + duration / 1_000_000_000.0 + " segundos");
 
-                    // Guardar los datos de cada caso en el archivo CSV
+                    // Save data to CSV file
                     saveData(totalPoints, piEstimate, duration);
                 }
             } else {
@@ -80,33 +94,48 @@ public class Client {
         }
     }
 
-    // Método para crear carpeta y archivo CSV, y guardar los datos
+    /**
+     * The `saveData` function saves total points, Pi estimate, and duration to a CSV file in a
+     * specified folder.
+     * 
+     * @param totalPoints The `totalPoints` parameter in the `saveData` method represents the total
+     * number of points used in estimating the value of pi. This value is typically generated randomly
+     * within a specified range and is crucial for calculating the pi estimate accurately using methods
+     * like Monte Carlo simulation.
+     * @param piEstimate The `piEstimate` parameter in the `saveData` method represents an estimation
+     * of the mathematical constant Pi (π). It is a floating-point number that is calculated during the
+     * execution of the program, typically using a Monte Carlo method or another numerical technique to
+     * approximate the value of Pi. In the
+     * @param duration The `duration` parameter in the `saveData` method represents the time duration
+     * in nanoseconds. This value is used to track how long a certain operation took to complete, such
+     * as calculating an estimation of pi. The duration is then saved along with other data like the
+     * total points and the pi estimate
+     */
     private static void saveData(int totalPoints, float piEstimate, long duration) {
-        String folderName = "resultado_pi";  // Carpeta a crear
-        String fileName = "estimacion_pi.csv";  // Nombre del archivo CSV
+        String folderName = "resultado_pi";  // create file
+        String fileName = "estimacion_pi.csv";  // Name file csv
 
-        // Verificar si la carpeta existe, y crearla si no existe
         File folder = new File(folderName);
         if (!folder.exists()) {
             folder.mkdirs();
         }
 
-        // Ruta completa del archivo CSV
+        // Path complete file csv
         String filePath = folderName + "/" + fileName;
 
-        // Verificar si el archivo CSV existe
+        // Verifiy file csv exists
         File csvFile = new File(filePath);
         boolean fileExists = csvFile.exists();
 
         try (FileWriter writer = new FileWriter(csvFile, true);
              PrintWriter printWriter = new PrintWriter(writer)) {
 
-            // Si el archivo no existía, escribir la cabecera
+            // if the file does not exist, write the header
             if (!fileExists) {
                 printWriter.println("TotalPoints,PiEstimate,Duration(ns)");
             }
 
-            // Escribir los datos en una nueva fila
+            // Write data to the file in a new line
             printWriter.println(totalPoints + "," + piEstimate + "," + duration);
 
         } catch (IOException e) {

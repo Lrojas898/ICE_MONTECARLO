@@ -1,5 +1,4 @@
 
-
 import com.zeroc.Ice.Communicator;
 import com.zeroc.Ice.ObjectAdapter;
 import com.zeroc.Ice.Util;
@@ -8,13 +7,20 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import com.google.gson.*;
 
-
 public class Master {
+    /**
+     * The main function initializes a communication system, creates a master
+     * adapter, listens for
+     * commands to estimate Pi, and waits for shutdown.
+     */
     public static void main(String[] args) {
         try (Communicator communicator = Util.initialize(args, "properties.cfg")) {
-            // Crear y activar el adaptador del maestro
+            // The line `ObjectAdapter masterAdapter =
+            // communicator.createObjectAdapter("MasterAdapter");` is
+            // creating an ObjectAdapter named "MasterAdapter" using the Communicator object
+            // `communicator`.
             ObjectAdapter masterAdapter = communicator.createObjectAdapter("MasterAdapter");
-            Gson gson =  new Gson();
+            Gson gson = new Gson();
             MasterI masterI = new MasterI();
             masterAdapter.add(masterI, Util.stringToIdentity("Master"));
             masterAdapter.activate();
@@ -24,7 +30,11 @@ public class Master {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String msg;
 
-            // Escuchar comandos desde la consola para estimar π
+            // This part of the code is responsible for reading user input from the console,
+            // parsing it
+            // to extract the command and its argument, and then executing the corresponding
+            // action
+            // based on the command.
             while ((msg = reader.readLine()) != null) {
                 String[] command = msg.split("::");
                 if (command.length == 2) {
@@ -42,7 +52,11 @@ public class Master {
                 }
             }
 
-            // Esperar hasta que el servidor se apague
+            // The line `communicator.waitForShutdown();` is causing the program to wait
+            // until the Ice communicator
+            // is shut down. This method blocks the current thread until the communicator is
+            // shut down, allowing
+            // the program to gracefully handle the shutdown process before exiting.
             communicator.waitForShutdown();
             reader.close();
         } catch (IOException e) {
